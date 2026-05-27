@@ -4,6 +4,16 @@
 
 Sanity Studio input component for editing ordered key-value string pairs. Supports add, remove, and reorder operations with real-time patch updates.
 
+## Preview
+
+**Empty / initial state** — a single placeholder row with the Add Row button below.
+
+![Empty initial state](./screenshots/empty.png)
+
+**With entries** — once rows exist, the reorder rail appears on the left and a trash icon on the right of each row.
+
+![Populated state with reorder rail](./screenshots/new-entry.png)
+
 ## Install
 
 ```bash
