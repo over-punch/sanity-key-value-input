@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@liiift-studio/sanity-key-value-input.svg)](https://www.npmjs.com/package/@liiift-studio/sanity-key-value-input)
 [![license: MIT](https://img.shields.io/npm/l/@liiift-studio/sanity-key-value-input.svg)](#license)
+[![sanity: v3 – v6](https://img.shields.io/badge/sanity-v3%20%E2%80%93%20v6-f03e2f.svg)](#requirements)
 
 Sanity Studio input component for editing ordered key-value string pairs. Supports add, remove, and reorder operations with real-time patch updates.
 
@@ -102,17 +103,36 @@ The reorder and remove controls render as functional buttons out of the box. For
 
 ## Requirements
 
-- Sanity Studio **v3+** (uses `set()` patches and the array field `components.input` API).
-- The peer dependencies below, installed in the consuming Studio.
+Supports **Sanity Studio v3, v4, v5 and v6** from a single build. It uses `set()` patches and the array field `components.input` API, and must render inside a Sanity Studio React tree.
 
-## Peer Dependencies
+The peer dependencies below must be present in the consuming Studio — they already are in any Studio install.
 
-| Package | Version |
+| Package | Supported range |
 |---|---|
-| `@sanity/icons` | `>=3` |
-| `@sanity/ui` | `>=3` |
+| `sanity` | `>=3 <7` (Studio v3 – v6) |
 | `react` | `>=18` |
-| `sanity` | `>=3` |
+| `@sanity/ui` | `>=2 <5` |
+| `@sanity/icons` | `>=2 <6` |
+
+### How one build spans four majors
+
+The peer ranges look inconsistent at a glance, so here is the reasoning:
+
+- **`@sanity/ui` v4 moved components to subpath entries.** `Tooltip`, `Menu`, `MenuButton`, `MenuItem`, `Code`, `Popover`, `Autocomplete`, `Toast` and `useToast` are no longer on the package root.
+- **`@sanity/icons` v5 removed every named `*Icon` export** — including `AddIcon`, `ArrowUpIcon`, `ArrowDownIcon` and `TrashIcon`, which this component's controls use.
+- **Both still *declare* the removed names in their `.d.ts`, typed `never`.** A named import therefore type-checks, compiles, and only then fails at runtime — the breakage is invisible to `tsc` and to a green build.
+- **So this package imports no `@sanity/ui` or `@sanity/icons` symbol directly.** Everything routes through [`@liiift-studio/sanity-ui-compat`](https://www.npmjs.com/package/@liiift-studio/sanity-ui-compat) (a real runtime dependency, installed for you), which resolves the installed namespace at runtime and works against either layout.
+
+**The `@sanity/ui` peer is `>=2 <5`, and that is correct for Sanity v6** — Studio v6 ships `@sanity/ui` **v4**, not v5. It is not a stale upper bound.
+
+### Verification status
+
+v3 – v6 support is established by the declared peer ranges, green builds, and the runtime-resolving compat layer. Beyond that, this component has been exercised in **three in-house Studios**. It has **not** been broadly tested in a running Sanity 6 Studio outside those. Please [open an issue](https://github.com/Liiift-Studio/sanity-key-value-input/issues) if you hit a version-specific problem.
+
+### Packaging
+
+- Ships **ESM** (`dist/index.mjs`) and **CJS** (`dist/index.js`).
+- The build sets `dts: false`, so **no bundled `.d.ts` type declarations are shipped.** TypeScript consumers will need their own module declaration, or can import from the published `src/` (exposed via the `source` export condition).
 
 ## License
 
