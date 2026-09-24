@@ -12,11 +12,11 @@ Use it in place of Sanity's default array-of-objects editor when you want a comp
 
 **Empty / initial state** — a single placeholder row with the Add Row button below.
 
-![Empty initial state: one Key/Value row above a full-width Add Row button](https://raw.githubusercontent.com/Liiift-Studio/sanity-key-value-input/main/screenshots/empty.png?v=1)
+![Empty initial state: one Key/Value row above a full-width Add Row button](https://raw.githubusercontent.com/over-punch/sanity-key-value-input/main/screenshots/empty.png?v=1)
 
 **With entries** — once rows exist, the reorder rail appears on the left and a trash icon on the right of each row.
 
-![Populated state: a filled Engineer/Name row with up/down reorder arrows on the left rail and a trash icon on the right](https://raw.githubusercontent.com/Liiift-Studio/sanity-key-value-input/main/screenshots/new-entry.png?v=1)
+![Populated state: a filled Engineer/Name row with up/down reorder arrows on the left rail and a trash icon on the right](https://raw.githubusercontent.com/over-punch/sanity-key-value-input/main/screenshots/new-entry.png?v=1)
 
 ## Install
 
@@ -127,7 +127,7 @@ The peer ranges look inconsistent at a glance, so here is the reasoning:
 
 ### Verification status
 
-v3 – v6 support is established by the declared peer ranges, green builds, and the runtime-resolving compat layer. Beyond that, this component has been exercised in **three in-house Studios**. It has **not** been broadly tested in a running Sanity 6 Studio outside those. Please [open an issue](https://github.com/Liiift-Studio/sanity-key-value-input/issues) if you hit a version-specific problem.
+v3 – v6 support is established by the declared peer ranges, green builds, and the runtime-resolving compat layer. Beyond that, this component has been exercised in **three in-house Studios**. It has **not** been broadly tested in a running Sanity 6 Studio outside those. Please [open an issue](https://github.com/over-punch/sanity-key-value-input/issues) if you hit a version-specific problem.
 
 ### Packaging
 
