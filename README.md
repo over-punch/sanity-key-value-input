@@ -1,7 +1,7 @@
 # sanity-key-value-input
 
-[![npm version](https://img.shields.io/npm/v/@liiift-studio/sanity-key-value-input.svg)](https://www.npmjs.com/package/@liiift-studio/sanity-key-value-input)
-[![license: MIT](https://img.shields.io/npm/l/@liiift-studio/sanity-key-value-input.svg)](#license)
+[![npm version](https://img.shields.io/npm/v/@overpunch/sanity-key-value-input.svg)](https://www.npmjs.com/package/@overpunch/sanity-key-value-input)
+[![license: MIT](https://img.shields.io/npm/l/@overpunch/sanity-key-value-input.svg)](#license)
 [![sanity: v3 – v6](https://img.shields.io/badge/sanity-v3%20%E2%80%93%20v6-f03e2f.svg)](#requirements)
 
 Sanity Studio input component for editing ordered key-value string pairs. Supports add, remove, and reorder operations with real-time patch updates.
@@ -21,7 +21,7 @@ Use it in place of Sanity's default array-of-objects editor when you want a comp
 ## Install
 
 ```bash
-npm install @liiift-studio/sanity-key-value-input
+npm install @overpunch/sanity-key-value-input
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ Use `KeyValueInput` as a custom `input` component on an array field. The array i
 
 ```typescript
 import { defineType, defineField } from 'sanity'
-import { KeyValueInput } from '@liiift-studio/sanity-key-value-input'
+import { KeyValueInput } from '@overpunch/sanity-key-value-input'
 
 export const mySchema = defineType({
 	name: 'myDocument',
@@ -121,7 +121,7 @@ The peer ranges look inconsistent at a glance, so here is the reasoning:
 - **`@sanity/ui` v4 moved components to subpath entries.** `Tooltip`, `Menu`, `MenuButton`, `MenuItem`, `Code`, `Popover`, `Autocomplete`, `Toast` and `useToast` are no longer on the package root.
 - **`@sanity/icons` v5 removed every named `*Icon` export** — including `AddIcon`, `ArrowUpIcon`, `ArrowDownIcon` and `TrashIcon`, which this component's controls use.
 - **Both still *declare* the removed names in their `.d.ts`, typed `never`.** A named import therefore type-checks, compiles, and only then fails at runtime — the breakage is invisible to `tsc` and to a green build.
-- **So this package imports no `@sanity/ui` or `@sanity/icons` symbol directly.** Everything routes through [`@liiift-studio/sanity-ui-compat`](https://www.npmjs.com/package/@liiift-studio/sanity-ui-compat) (a real runtime dependency, installed for you), which resolves the installed namespace at runtime and works against either layout.
+- **So this package imports no `@sanity/ui` or `@sanity/icons` symbol directly.** Everything routes through [`@overpunch/sanity-ui-compat`](https://www.npmjs.com/package/@overpunch/sanity-ui-compat) (a real runtime dependency, installed for you), which resolves the installed namespace at runtime and works against either layout.
 
 **The `@sanity/ui` peer is `>=2 <5`, and that is correct for Sanity v6** — Studio v6 ships `@sanity/ui` **v4**, not v5. It is not a stale upper bound.
 

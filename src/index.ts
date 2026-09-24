@@ -1,3 +1,3 @@
-// Entry point for @liiift-studio/sanity-key-value-input
+// Entry point for @overpunch/sanity-key-value-input
 
 export {KeyValueInput} from './components/KeyValueInput'
